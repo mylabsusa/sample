@@ -1,4 +1,5 @@
-//This class file helps in creating the database on the replica set, this could also be used for standalone host as well. 
+//This class file helps in creating the mongodb database on the replica set, this could also be used for standalone host as well. 
+//Remember it requires a collection while creating the database. 
 //Author - Adithya Vadali
 
 import com.mongodb.ConnectionString;
