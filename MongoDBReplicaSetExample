@@ -1,0 +1,33 @@
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+
+public class MongoDBReplicaSetExample {
+
+    public static void main(String[] args) {
+        // Connection string for the MongoDB replica set
+        String connectionString = "mongodb://host1:port1,host2:port2,host3:port3/?replicaSet=yourReplicaSetName";
+
+        // MongoDB database name to create
+        String databaseName = "yourDatabaseName";
+
+        // Create a connection to the MongoDB replica set
+        ConnectionString connString = new ConnectionString(connectionString);
+        MongoClientSettings settings = MongoClientSettings.builder()
+                .applyConnectionString(connString)
+                .build();
+        MongoClient mongoClient = MongoClients.create(settings);
+
+        // Get the primary node of the replica set
+        MongoDatabase adminDb = mongoClient.getDatabase("admin");
+        adminDb.runCommand(new Document("replSetGetStatus", 1));
+
+        // Create the database
+        mongoClient.getDatabase(databaseName).createCollection("dummyCollection");
+
+        // Close the MongoDB client connection
+        mongoClient.close();
+    }
+}
