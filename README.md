@@ -1,5 +1,13 @@
 
-To run mongodb local from the CLI , part of mongodb.msi file. 
+MongoDB Installation on Windows. 
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/
+
+Install with docker. 
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-community-with-docker/
+https://medium.com/@szpytfire/setting-up-mongodb-within-a-docker-container-for-local-development-327e32a2b68d
+
+
+To run mongodb local from the CLI , part of mongodb.msi package. 
 "C:\Program Files\MongoDB\Server\6.0\bin\mongod.exe" --dbpath="c:\mongodb\data\db"
 
 # During installation if mongodb is installed as a service, then the above command is not needed to start the db separately. 
@@ -17,6 +25,10 @@ P.S
 ##spring.data.mongodb.uri=mongodb://host.docker.internal:27017/labs@home
 
 
+#if mongodb is running in your local container, you can connect your app container like this. 
+docker run -p 8080:8080 --name springboot-mongodb --link mongodb-containername:mongo -d springboot-mongodb:1.0
+
+
 # sample references. 
 
 Good start - https://www.mongodb.com/compatibility/spring-boot
@@ -31,5 +43,8 @@ MongoDB with REST API - https://plainenglish.io/blog/building-a-rest-api-using-m
  
  https://www.javaguides.net/2019/12/spring-boot-crud-rest-api-mongodb-maven-example-tutorial.html
  
+ https://kb.objectrocket.com/mongo-db/how-to-delete-mongodb-document-using-spring-data-part-2-1088
+ 
+ https://www.digitalocean.com/community/tutorials/spring-boot-mongodb
  
  https://www.mongodb.com/compatibility/docker
