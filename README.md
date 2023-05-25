@@ -1,6 +1,11 @@
 This uri will create db in mongo. 
 spring.data.mongodb.uri=mongodb://127.0.0.1:27017/labs@home
 
+P.S 
+#use the below to connect local mongodb from a docker container and build the image.
+##spring.data.mongodb.uri=mongodb://host.docker.internal:27017/labs@home
+
+
 # sample references. 
 
 Good start - https://www.mongodb.com/compatibility/spring-boot
